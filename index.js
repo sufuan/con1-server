@@ -61,18 +61,18 @@ async function run() {
       // const name = req.body.name
       // const price =req.body.price
       const pd = req.body
-      const tokenInfo = req.headers.authorization;
+      // const tokenInfo = req.headers.authorization;
       // console.log(tokenInfo);
-      const [email, accessToken] = tokenInfo.split(" ")
-      const decoded = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET)
-      console.log(decoded);
-      if (email === decoded.email) {
+      // const [email, accessToken] = tokenInfo.split(" ")
+      // const decoded = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET)
+      // console.log(decoded);
+      // if (email === decoded.email) {
         const result = await productCollection.insertOne(pd);
         res.send('successfully')
-      }
-      else {
-        res.send({ success: 'UnAuthoraized Access' })
-      }
+      // }
+      // else {
+      //   res.send({ success: 'UnAuthoraized Access' })
+      // }
 
     })
 
@@ -151,6 +151,14 @@ run().catch(console.dir);
 app.get('/', (req, res) => {
   res.send("hello")
 })
+
+app.get('/hero', (req, res) => {
+  res.send("hello h")
+})
+app.get('/h', (req, res) => {
+  res.send("hello h")
+})
+
 
 
 
